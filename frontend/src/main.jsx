@@ -14,6 +14,7 @@ import Chatbot from "../pages/Chatbot/Chatbot.jsx";
 import MentorRequest from "../components/mentor-request/MentorRequest.jsx";
 import CategoryForm from "../components/Category/Category.jsx";
 import Logout from "../components/Logout/Logout.jsx";
+import Page from "../components/Landing/Page.jsx";
 
 
 
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
       {
         path: "/chatbot",
         element: <Chatbot/>,
+      },
+      {
+        path: "/states",
+        element: <Page/>,
       }
     ],
   },

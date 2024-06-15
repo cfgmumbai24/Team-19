@@ -13,7 +13,7 @@ const Category = () => {
             alt="Header Image"
           />
         </div>
-        <p>
+        <p id = "myid">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi
           explicabo tempore officiis, asperiores incidunt quis dolor voluptates
           sapiente maxime harum dolore magnam ad laboriosam, odio in nam

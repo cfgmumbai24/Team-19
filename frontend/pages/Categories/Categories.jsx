@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "../Categories/Categories.css";
+import axios from "axios";
 
 const Categories = () => {
   const cards = [
@@ -52,16 +53,26 @@ const Categories = () => {
         "https://authindia-com-assets-offload.s3.ap-south-1.amazonaws.com/wp-content/uploads/2020/01/01001353/HANDMADE1.jpeg",
     },
   ];
+  useEffect(() => {
+    axios.post("http://localhost:4000/api/categoriesGet").then(response => {
+      console.log(response.data);
+    });
+  }, []);
   return (
     <>
-      {" "}
       <div className="card-grid">
         {cards.map(card => (
-          <div key={card.id} className="card">
-            <img src={card.imageUrl} alt={card.title} className="responsive" />
-            <h3>{card.title}</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
+          <a href="/category">
+            <div key={card.id} className="card">
+              <img
+                src={card.imageUrl}
+                alt={card.title}
+                className="responsive"
+              />
+              <h3>{card.title}</h3>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+            </div>
+          </a>
         ))}
       </div>
     </>

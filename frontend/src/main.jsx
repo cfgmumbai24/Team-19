@@ -13,6 +13,7 @@ import MentorRequest from "../components/mentor-request/MentorRequest.jsx";
 import Logout from "../components/Logout/Logout.jsx";
 import Login from "../components/Login/Login.jsx";
 import VideoUpload from "../pages/video-upload/VideoUpload.jsx";
+import LMS from "../pages/lms/LMS.jsx";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
       {
         path: "/video-upload",
         element: <VideoUpload />,
+      },
+      {
+        path: "/lms",
+        element: <LMS />,
       },
     ],
   },

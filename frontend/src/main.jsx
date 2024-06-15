@@ -15,7 +15,11 @@ import MentorRequest from "../components/mentor-request/MentorRequest.jsx";
 import CategoryForm from "../components/Category/Category.jsx";
 import Logout from "../components/Logout/Logout.jsx";
 import Page from "../components/Landing/Page.jsx";
+<<<<<<< HEAD
 import Protected from "../components/AuthLayout.jsx";
+=======
+import MentorForm from "../components/mentor-request/mentor/mentor_form.jsx";
+>>>>>>> 5ef9e180c919bcf84e01b7ce7679f19140ec3831
 
 
 const user = sessionStorage.getItem("user")
@@ -38,12 +42,13 @@ const router = createBrowserRouter([
         path: "/categories",
         element: <Categories />,
       },
+
       {
         path: "/category-form",
         element: <CategoryForm />,
       },
       {
-        path: "/category",
+        path: "/category/:id",
         element: <Category />,
       },
       {
@@ -60,19 +65,23 @@ const router = createBrowserRouter([
       },
       {
         path: "/logout",
-        element: <Logout/>,
+        element: <Logout />,
       },
       {
         path: "/login",
-        element: <Login/>,
+        element: <Login />,
       },
       {
         path: "/chatbot",
-        element: <Chatbot/>,
+        element: <Chatbot />,
       },
       {
         path: "/states",
         element: <Page/>,
+      },
+      {
+        path:"/mentor-form",
+        element:<MentorForm/>
       }
     ],
   },

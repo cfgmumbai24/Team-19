@@ -5,11 +5,14 @@ import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Home from "../components/Home/Home.jsx";
 import Sign from "../components/Sign/Sign.jsx";
+import Login from "../components/Login/Login.jsx";
 import Success from "../pages/Success/Success.jsx";
 import Categories from "../pages/Categories/Categories.jsx";
 import Category from "../pages/Category/Category.jsx";
 import Admin from "../pages/Admin/Admin.jsx";
 import MentorRequest from "../components/mentor-request/MentorRequest.jsx";
+import CategoryForm from "../components/Category/Category.jsx";
+import Logout from "../components/Logout/Logout.jsx";
 
 
 
@@ -30,6 +33,10 @@ const router = createBrowserRouter([
       {
         path: "/categories",
         element: <Categories />,
+      },
+      {
+        path: "/category-form",
+        element: <CategoryForm />,
       },
       {
         path: "/category",

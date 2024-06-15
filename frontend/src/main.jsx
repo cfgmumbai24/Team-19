@@ -9,6 +9,7 @@ import Success from "../pages/Success/Success.jsx";
 import Categories from "../pages/Categories/Categories.jsx";
 import Category from "../pages/Category/Category.jsx";
 import Admin from "../pages/Admin/Admin.jsx";
+import Chatbot from "../pages/Chatbot/Chatbot.jsx";
 import MentorRequest from "../components/mentor-request/MentorRequest.jsx";
 import Logout from "../components/Logout/Logout.jsx";
 import Login from "../components/Login/Login.jsx";
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
         path: "/lms",
         element: <LMS />,
       },
+      {
+        path: "/chatbot",
+        element: <Chatbot/>,
+      }
     ],
   },
 ]);

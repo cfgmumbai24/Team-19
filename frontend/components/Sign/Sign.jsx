@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Sign.css'; 
 import axios from "axios"
+import { NavLink } from 'react-router-dom';
 
 export default function Sign() {
   const [formData, setFormData] = useState({
@@ -31,6 +32,7 @@ export default function Sign() {
       const response = await axios.post('http://localhost:4000/api/auth/signup', formData);
       console.log(response.data);
       sessionStorage.setItem("user", JSON.stringify(response.data))
+
       // Handle successful registration
     } catch (error) {
       console.error(error);
@@ -76,8 +78,10 @@ export default function Sign() {
           Phone Number:
           <input type="tel" name="phoneNumber" value={formData.phoneNumber} onChange={handleChange} required />
         </label>
-        <button type="submit">Register</button>
+        <NavLink to="/"><button type="submit">Register</button></NavLink>
       </form>
+
+      <NavLink to="/login">already have an account?</NavLink>
     </div>
   );
 }

@@ -37,12 +37,13 @@ const router = createBrowserRouter([
         path: "/categories",
         element: <Categories />,
       },
+
       {
         path: "/category-form",
         element: <CategoryForm />,
       },
       {
-        path: "/category",
+        path: "/category/:id",
         element: <Category />,
       },
       {
@@ -59,15 +60,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/logout",
-        element: <Logout/>,
+        element: <Logout />,
       },
       {
         path: "/login",
-        element: <Login/>,
+        element: <Login />,
       },
       {
         path: "/chatbot",
-        element: <Chatbot/>,
+        element: <Chatbot />,
       },
       {
         path: "/states",

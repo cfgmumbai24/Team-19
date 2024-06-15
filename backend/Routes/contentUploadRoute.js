@@ -1,7 +1,7 @@
 const express = require("express");
 const router1 = require("express").Router();
 const cloudinary = require('cloudinary');
-const Content = require("../Models/contentSchema");
+const Content1 = require("../Models/contentSchema");
 const fs = require('fs');
 
 cloudinary.config({
@@ -41,9 +41,8 @@ router1.post('/upload', async (req, res) => {
             uploadedMedia.push(mediaMetadata);
 
           
-            const { u_id,title, username,category,content, location } = req.body;
-            const newContent = new Content({
-                u_id,
+            const { title, username,category,content, location } = req.body;
+            const newContent = new Content1({
                 title,
                 username,
                 category,
@@ -60,10 +59,20 @@ router1.post('/upload', async (req, res) => {
     }
 });
 
-router1.get('/media', (req, res) => {
-    res.json(uploadedMedia); 
-});
+router1.get('/uploadGet', async (req, res) => {
+    try {
+        const { category } = req.query;
+        if (!category) {
+            return res.status(400).json({ msg: "Category is required" });
+        }
 
+        const contents = await Content1.find({ category });
+
+        res.json(contents);
+    } catch (err) {
+        res.status(500).json({ msg: err.message });
+    }
+});
 const removeTmp = (path) => {
     fs.unlink(path, err => {
         if (err) throw err;

@@ -7,14 +7,19 @@
   grid-template-columns: repeat(4, 1fr); /* 4 cards per row for xl screens */
   gap: 25px; /* spacing between cards */
   padding: 10px;
-  align-items: stretch;
+  /* align-items: stretch; */
 }
 
 .card {
   border: 1px solid #ececec;
   border-radius: 10px;
   padding: 15px;
+
   /* text-align: center; */
+}
+
+.card-height {
+  min-height: 350px;
 }
 
 .card:hover {

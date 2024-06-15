@@ -1,4 +1,4 @@
-const UserP = require("../Models/userModel.js");
+// const UserP = require("../Models/userModel.js");
 const UserPreference = require("../Models/userPreferenceModel.js");
 
 const sendData = async (req, res) => {
@@ -39,4 +39,15 @@ const sendData = async (req, res) => {
   }
 };
 
-module.exports = sendData;
+const getData = async (req, res) => {
+  try {
+    const newUserPreference = await UserPreference.find();
+
+    res.status(200).json(newUserPreference);
+  } catch (error) {
+    console.log(error.message);
+    res.status(500).json({ error: "internal server error" });
+  }
+};
+
+module.exports = { sendData, getData };

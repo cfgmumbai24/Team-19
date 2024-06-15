@@ -1,14 +1,22 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const fileUpload = require('express-fileupload')
-// const dotenv = require("dotenv");
+
 const app = express();
-// dotenv.config();
+
 app.use(fileUpload({
     useTempFiles:true
 }))
-app.use(express.json());
+
 app.use('/api',require('./Routes/contentUploadRoute'))
+
+const authRoutes = require("./Routes/authRoutes.js");
+
+
+
+app.use(express.json());
+app.use("/api/auth", authRoutes);
+
 app.listen(4000, async () => {
   console.log("connected to port" + 4000);
   try {

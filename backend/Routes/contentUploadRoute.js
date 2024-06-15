@@ -1,17 +1,17 @@
 const express = require("express");
 const router1 = require("express").Router();
 const cloudinary = require('cloudinary');
-
+const Content = require("../Models/contentSchema");
 const fs = require('fs');
 
 cloudinary.config({
-    cloud_name:"dhtk9tq1t",
-    api_key: ,
-    api_secret: ""
+    cloud_name : process.env.CLOUD_NAME,
+    api_key : process.env.CLOUD_API_KEY,
+    api_secret : process.env.CLOUD_API_SECRET
 });
 const uploadedMedia = []; 
 
-router1.post('/upload', (req, res) => {
+router1.post('/upload', async (req, res) => {
     try {
         if (!req.files || Object.keys(req.files).length === 0)
             return res.status(400).send({ msg: "No files were uploaded" });
@@ -33,22 +33,34 @@ router1.post('/upload', (req, res) => {
             uploadOptions.resource_type = 'video'; 
         }
 
-        cloudinary.v2.uploader.upload(file.tempFilePath, uploadOptions, (err, result) => {
+        cloudinary.v2.uploader.upload(file.tempFilePath, uploadOptions, async (err, result) => {
             if (err) throw err;
 
             removeTmp(file.tempFilePath);
             const mediaMetadata = { public_id: result.public_id, url: result.secure_url, resource_type: result.resource_type };
-            uploadedMedia.push(mediaMetadata); // Store media metadata
+            uploadedMedia.push(mediaMetadata);
 
-            res.json(mediaMetadata);
+          
+            const { u_id,title, username,content, location } = req.body;
+            const newContent = new Content({
+                u_id,
+                title,
+                username,
+                content,
+                url: result.secure_url,
+                location
+            });
+            const savedContent = await newContent.save();
+
+            res.json(savedContent);
         });
-       
     } catch (err) {
         res.status(500).json({ msg: err.message });
     }
 });
-router1.get('/images', (req, res) => {
-    res.json(uploadedImages); // Return the list of uploaded images
+
+router1.get('/media', (req, res) => {
+    res.json(uploadedMedia); 
 });
 
 const removeTmp = (path) => {
@@ -56,4 +68,5 @@ const removeTmp = (path) => {
         if (err) throw err;
     });
 };
+
 module.exports = router1;

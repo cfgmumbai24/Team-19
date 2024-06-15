@@ -1,6 +1,12 @@
 const mongoose  = require('mongoose')
 
 const ContentSchema = new mongoose.Schema({
+    u_id:{
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        unique: true
+
+    },
     title: {
         type: String,
         required: true
@@ -9,8 +15,12 @@ const ContentSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    media: {
-        type:Object,
+    content:{
+        type: String,
+        required :true
+    },
+    url: {
+        type: String,
         required: true
     },
     location: {

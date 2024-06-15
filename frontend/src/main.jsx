@@ -15,9 +15,11 @@ import MentorRequest from "../components/mentor-request/MentorRequest.jsx";
 import CategoryForm from "../components/Category/Category.jsx";
 import Logout from "../components/Logout/Logout.jsx";
 import Page from "../components/Landing/Page.jsx";
+import Protected from "../components/AuthLayout.jsx";
 
 
-
+const user = sessionStorage.getItem("user")
+console.log(user)
 
 const router = createBrowserRouter([
   {
@@ -30,7 +32,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/sign-up",
-        element: <Sign />,
+        element: <Protected authentication={false}><Sign /></Protected>,
       },
       {
         path: "/categories",

@@ -30,6 +30,14 @@ const userSchema = new mongoose.Schema(
       required: true,
       unique: true,
     },
+    type: {
+      type: Number,
+      required: true,
+    },
+    authenticated: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );

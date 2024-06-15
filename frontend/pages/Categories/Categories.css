@@ -1,0 +1,55 @@
+* {
+  font-family: "Montserrat", sans-serif;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 cards per row for xl screens */
+  gap: 25px; /* spacing between cards */
+  padding: 10px;
+}
+
+.card {
+  border: 1px solid #ececec;
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  margin-bottom: 10px;
+}
+
+.card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+}
+
+.responsive {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 1200px) {
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr); /* 2 cards per row for l screens */
+  }
+}
+
+@media (max-width: 600px) {
+  .card-grid {
+    grid-template-columns: repeat(
+      1,
+      1fr
+    ); /* 1 card per row for mobile screens */
+  }
+}

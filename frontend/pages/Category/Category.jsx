@@ -19,10 +19,17 @@ const Category = () => {
   // const [category, setCategory] = useState(null);
   // console.log(match);
   const url = `http://localhost:4000/api/categoriesGet?name=${lastSegment}`;
+  const url2 = `http://localhost:4000/api/uploadGet?category=${lastSegment}`;
   useEffect(() => {
     axios.get(url).then(response => {
       setData(...response.data);
       console.log(response.data);
+    });
+  }, []);
+  useEffect(() => {
+    axios.get(url2).then(response => {
+      setData(...response.data);
+      console.log("Category" + response.data);
     });
   }, []);
   if (!data) {

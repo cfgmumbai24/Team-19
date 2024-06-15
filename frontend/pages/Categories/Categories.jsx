@@ -68,7 +68,7 @@ const Categories = () => {
         {data &&
           data.map(val => (
             <Link to={`/category/${val.name}`}>
-              <div key={val.id} className="card">
+              <div key={val.id} className="card card-height">
                 <img src={val.url} alt={val.name} className="responsive" />
                 <h3>{val.name}</h3>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>

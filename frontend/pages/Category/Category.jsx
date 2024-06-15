@@ -50,7 +50,19 @@ const Category = () => {
         </p>
       </section>
       <section>
-        <h2>Related Feeds</h2>
+        <h2>Success Stories</h2>
+        <div className="card">
+          <div className="card-content">
+            <h3 className="card-title">Card Title</h3>
+            <p className="card-text">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
+              quis justo eget urna posuere euismod eget ac diam.
+            </p>
+            <a href="#" className="card-link">
+              Read more
+            </a>
+          </div>
+        </div>
       </section>
     </div>
   );

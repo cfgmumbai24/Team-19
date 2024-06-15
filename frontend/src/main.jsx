@@ -10,6 +10,7 @@ import Success from "../pages/Success/Success.jsx";
 import Categories from "../pages/Categories/Categories.jsx";
 import Category from "../pages/Category/Category.jsx";
 import Admin from "../pages/Admin/Admin.jsx";
+import Chatbot from "../pages/Chatbot/Chatbot.jsx";
 import MentorRequest from "../components/mentor-request/MentorRequest.jsx";
 import CategoryForm from "../components/Category/Category.jsx";
 import Logout from "../components/Logout/Logout.jsx";
@@ -62,6 +63,10 @@ const router = createBrowserRouter([
         path: "/login",
         element: <Login/>,
       },
+      {
+        path: "/chatbot",
+        element: <Chatbot/>,
+      }
     ],
   },
 ]);

@@ -1,7 +1,7 @@
 const express = require("express");
-const router1 = require("express").Router();
+const router3 = require("express").Router();
 const cloudinary = require('cloudinary');
-const Content1 = require("../Models/contentSchema");
+const Category = require("../Models/categoryModel");
 const fs = require('fs');
 
 cloudinary.config({
@@ -11,7 +11,7 @@ cloudinary.config({
 });
 const uploadedMedia = []; 
 
-router1.post('/upload', async (req, res) => {
+router3.post('/categoryUpload', async (req, res) => {
     try {
         if (!req.files || Object.keys(req.files).length === 0)
             return res.status(400).send({ msg: "No files were uploaded" });
@@ -41,14 +41,11 @@ router1.post('/upload', async (req, res) => {
             uploadedMedia.push(mediaMetadata);
 
           
-            const { title, username,category,content, location } = req.body;
-            const newContent = new Content1({
-                title,
-                username,
-                category,
-                content,
+            const {name,description  } = req.body;
+            const newContent = new Category({
+                name,
                 url: result.secure_url,
-                location
+                description,
             });
             const savedContent = await newContent.save();
 
@@ -58,25 +55,38 @@ router1.post('/upload', async (req, res) => {
         res.status(500).json({ msg: err.message });
     }
 });
-
-router1.get('/uploadGet', async (req, res) => {
+router3.get('/allCategories', async (req, res) => {
     try {
-        const { category } = req.query;
-        if (!category) {
-            return res.status(400).json({ msg: "Category is required" });
-        }
-
-        const contents = await Content1.find({ category });
-
-        res.json(contents);
+        const categories = await Category.find({});
+        res.json(categories.map(category => ({
+            name: category.name,
+            url: category.url,
+            description: category.description
+        })));
     } catch (err) {
         res.status(500).json({ msg: err.message });
     }
 });
+
+router3.get('/categoriesGet', async (req, res) => {
+    try {
+        const { name } = req.query; 
+        const categories = await Category.find(name ? { name } : {}); 
+
+        res.json(categories.map(category => ({
+            name: category.name,
+            url: category.url,
+            description: category.description
+        })));
+    } catch (err) {
+        res.status(500).json({ msg: err.message });
+    }
+});
+
 const removeTmp = (path) => {
     fs.unlink(path, err => {
         if (err) throw err;
     });
 };
 
-module.exports = router1;
+module.exports = router3;

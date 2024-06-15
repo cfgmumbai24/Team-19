@@ -1,12 +1,7 @@
 const mongoose  = require('mongoose')
 
 const ContentSchema = new mongoose.Schema({
-    u_id:{
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        unique: true
-
-    },
+    
     title: {
         type: String,
         required: true
@@ -15,10 +10,16 @@ const ContentSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    category:{
+        type: String,
+        required: true
+
+    },
     content:{
         type: String,
         required :true
     },
+   
     url: {
         type: String,
         required: true
@@ -31,4 +32,4 @@ const ContentSchema = new mongoose.Schema({
 },{
     timestamps:true
 })
-module.exports = mongoose.model('contents',ContentSchema)
+module.exports = mongoose.model('contentsamples',ContentSchema)

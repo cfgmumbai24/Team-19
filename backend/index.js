@@ -25,6 +25,8 @@ dotenv.config();
 
 app.use("/api/auth", authRoutes);
 app.use("/api/userPreference", userPreferenceRoutes);
+app.use("/api", require("./Routes/lmsRoutes"));
+app.use("/api", require("./Routes/categoryRoute"));
 
 app.listen(process.env.PORT || 4000, async () => {
   console.log("connected to port" + process.env.PORT);

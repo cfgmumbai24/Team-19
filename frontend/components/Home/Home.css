@@ -1,7 +1,13 @@
-.imgBanner{
-    position: absolute;
+.home{
+    background-color: white;
+}
+.states{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: space-evenly; */
+    /* align-items: flex-end; */
+    margin-left: 15%;
+    margin-right: 15%;
+
 }
 
-body{
-    background: url("https://www.simplilearn.com/ice9/free_resources_article_thumb/top-7-steps-to-decide-the-right-career-path-ccr9-article.jpg") no-repeat fixed center;
-}

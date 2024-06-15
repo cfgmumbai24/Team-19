@@ -6,10 +6,12 @@ import './index.css'
 import {RouterProvider, createBrowserRouter} from "react-router-dom"
 import Home from '../components/Home/Home.jsx'
 import Sign from '../components/Sign/Sign.jsx'
+import Logout from '../components/Logout/Logout.jsx'
 import Success from '../pages/Success/Success.jsx'
 import Categories from '../pages/Categories/Categories.jsx'
 import Category from '../pages/Category/Category.jsx'
 import Admin from '../pages/Admin/Admin.jsx'
+import Login from '../components/Login/Login.jsx'
 
 
 const router = createBrowserRouter([
@@ -19,11 +21,10 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-
         element: <Home />,
       },
       {
-        path: "/login",
+        path: "/sign-up",
         element: <Sign />,
       },
       {
@@ -41,6 +42,14 @@ const router = createBrowserRouter([
       {
         path: "/admin",
         element: <Admin />,
+      },
+      {
+        path: "/logout",
+        element: <Logout/>,
+      },
+      {
+        path: "/login",
+        element: <Login/>,
       },
     ],
   },

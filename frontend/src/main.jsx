@@ -11,6 +11,9 @@ import Category from "../pages/Category/Category.jsx";
 import Admin from "../pages/Admin/Admin.jsx";
 import MentorRequest from "../components/mentor-request/MentorRequest.jsx";
 
+
+
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -18,11 +21,10 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-
         element: <Home />,
       },
       {
-        path: "/login",
+        path: "/sign-up",
         element: <Sign />,
       },
       {
@@ -44,6 +46,14 @@ const router = createBrowserRouter([
       {
         path: "/admin/mentor-requests",
         element: <MentorRequest />,
+      },
+      {
+        path: "/logout",
+        element: <Logout/>,
+      },
+      {
+        path: "/login",
+        element: <Login/>,
       },
     ],
   },

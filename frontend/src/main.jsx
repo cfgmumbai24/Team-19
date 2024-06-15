@@ -10,9 +10,9 @@ import Categories from "../pages/Categories/Categories.jsx";
 import Category from "../pages/Category/Category.jsx";
 import Admin from "../pages/Admin/Admin.jsx";
 import MentorRequest from "../components/mentor-request/MentorRequest.jsx";
-
-
-
+import Logout from "../components/Logout/Logout.jsx";
+import Login from "../components/Login/Login.jsx";
+import VideoUpload from "../pages/video-upload/VideoUpload.jsx";
 
 const router = createBrowserRouter([
   {
@@ -49,11 +49,15 @@ const router = createBrowserRouter([
       },
       {
         path: "/logout",
-        element: <Logout/>,
+        element: <Logout />,
       },
       {
         path: "/login",
-        element: <Login/>,
+        element: <Login />,
+      },
+      {
+        path: "/video-upload",
+        element: <VideoUpload />,
       },
     ],
   },

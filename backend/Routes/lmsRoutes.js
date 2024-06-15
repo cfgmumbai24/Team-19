@@ -63,8 +63,13 @@ router2.post('/mediaUpload', async (req, res) => {
     }
 });
 
-router2.get('/mediaUpload', (req, res) => {
-    res.json(uploadedMedia); 
+router2.get('/allMediaUploads', async (req, res) => {
+    try {
+        const mediaUploads = await Lms.find({});
+        res.json(mediaUploads);
+    } catch (err) {
+        res.status(500).json({ msg: err.message });
+    }
 });
 
 const removeTmp = (path) => {

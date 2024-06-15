@@ -1,7 +1,13 @@
-import React from "react";
+import React, { useState, useEffect, useLocation } from "react";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../Category/Category.css";
 
 const Category = () => {
+  console.log(window.location.href);
+  // const [category, setCategory] = useState(null);
+  // console.log(match);
+
   return (
     <div className="article">
       <section className="article-header">
@@ -13,7 +19,7 @@ const Category = () => {
             alt="Header Image"
           />
         </div>
-        <p id = "myid">
+        <p id="myid">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi
           explicabo tempore officiis, asperiores incidunt quis dolor voluptates
           sapiente maxime harum dolore magnam ad laboriosam, odio in nam
@@ -70,9 +76,9 @@ const Category = () => {
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
               quis justo eget urna posuere euismod eget ac diam.
             </p>
-            <a href="/success" className="card-link">
+            <Link to="/success" className="card-link">
               Read more
-            </a>
+            </Link>
           </div>
         </div>
       </section>

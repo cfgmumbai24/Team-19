@@ -11,9 +11,10 @@ function LMS() {
     const fetchVideos = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:4000/api/mediaUpload"
+          "http://localhost:4000/api/allMediaUploads"
         );
         setVideos(response.data);
+        console.log(videos);
         const uniqueCategories = new Set(
           response.data.flatMap((video) => video.videoTag)
         );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App.jsx";
 import "./index.css";
@@ -15,7 +15,16 @@ import Logout from "../components/Logout/Logout.jsx";
 import Login from "../components/Login/Login.jsx";
 import VideoUpload from "../pages/video-upload/VideoUpload.jsx";
 import LMS from "../pages/lms/LMS.jsx";
+import { useState } from "react";
 
+// const getUser = () => {
+//   useEffect(() => {
+//     setUser(localStorage.getItem("user"));
+//   }, [localStorage.getItem("user")]);
+// };
+
+// getUser;
+// const num = 10;
 const router = createBrowserRouter([
   {
     path: "/",
@@ -67,8 +76,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/chatbot",
-        element: <Chatbot/>,
-      }
+        element: <Chatbot />,
+      },
     ],
   },
 ]);

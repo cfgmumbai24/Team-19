@@ -6,6 +6,11 @@ import './index.css'
 import {RouterProvider, createBrowserRouter} from "react-router-dom"
 import Home from '../components/Home/Home.jsx'
 import Sign from '../components/Sign/Sign.jsx'
+import Success from '../pages/Success/Success.jsx'
+import Categories from '../pages/Categories/Categories.jsx'
+import Category from '../pages/Category/Category.jsx'
+import Admin from '../pages/Admin/Admin.jsx'
+
 
 const router = createBrowserRouter([
   {
@@ -21,7 +26,22 @@ const router = createBrowserRouter([
         path: "/login",
         element: <Sign />,
       },
-      
+      {
+        path: "/categories",
+        element: <Categories />,
+      },
+      {
+        path: "/category",
+        element: <Category />,
+      },
+      {
+        path: "/success",
+        element: <Success />,
+      },
+      {
+        path: "/admin",
+        element: <Admin />,
+      },
     ],
   },
 ]);        

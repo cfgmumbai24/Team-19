@@ -32,6 +32,7 @@ const router = createBrowserRouter([
         path: "/categories",
         element: <Categories />,
       },
+
       {
         path: "/category-form",
         element: <CategoryForm />,

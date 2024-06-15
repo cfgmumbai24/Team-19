@@ -15,6 +15,10 @@ import MentorRequest from "../components/mentor-request/MentorRequest.jsx";
 import CategoryForm from "../components/Category/Category.jsx";
 import Logout from "../components/Logout/Logout.jsx";
 import Page from "../components/Landing/Page.jsx";
+import MentorForm from "../components/mentor-request/mentor/mentor_form.jsx";
+
+
+
 
 const router = createBrowserRouter([
   {
@@ -68,8 +72,12 @@ const router = createBrowserRouter([
       },
       {
         path: "/states",
-        element: <Page />,
+        element: <Page/>,
       },
+      {
+        path:"/mentor-form",
+        element:<MentorForm/>
+      }
     ],
   },
 ]);

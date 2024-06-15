@@ -55,7 +55,18 @@ router3.post('/categoryUpload', async (req, res) => {
         res.status(500).json({ msg: err.message });
     }
 });
-
+router3.get('/allCategories', async (req, res) => {
+    try {
+        const categories = await Category.find({});
+        res.json(categories.map(category => ({
+            name: category.name,
+            url: category.url,
+            description: category.description
+        })));
+    } catch (err) {
+        res.status(500).json({ msg: err.message });
+    }
+});
 
 router3.get('/categoriesGet', async (req, res) => {
     try {

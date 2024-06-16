@@ -1,6 +1,7 @@
 import '../Admin/Admin.css';
 import React, { useEffect, useRef, useState } from 'react';
 import Chart from 'chart.js/auto';
+import {NavLink} from "react-router-dom"
 
 const Admin = () => {
   const ageCanvasRef = useRef(null);
@@ -121,21 +122,35 @@ const Admin = () => {
 
   return (
     <div className="Admin">
+      
       <h1>Analytics Dashboard</h1>
       <div className="chart-container">
         <div className="admin-chart">
-          <h2>Age Distribution</h2>
+          <a href=""><h2>Age Distribution</h2></a>
+          <a href="">download age distribution report</a>
           <canvas ref={ageCanvasRef}></canvas>
         </div>
+        
+
         <div className="admin-chart">
-          <h2>Gender Distribution</h2>
+          <a href=""><h2>Gender Distribution</h2></a>
+          <a href="">download gender distribution report</a>
           <canvas ref={genderCanvasRef}></canvas>
         </div>
         <div className="admin-chart">
-          <h2>State Distribution</h2>
+          <a href=""><h2>State Distribution</h2></a>
+          <a href="">download state distribution report</a>
           <canvas ref={stateCanvasRef}></canvas>
         </div>
       </div>
+
+      <button style={{
+        height:"75px",
+        width:"150px",
+
+      }}>
+        <NavLink to="/admin/mentor-requests">Request mentor stories</NavLink>
+      </button>
     </div>
   );
 };

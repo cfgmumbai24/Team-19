@@ -151,6 +151,14 @@ const Admin = () => {
       }}>
         <NavLink to="/admin/mentor-requests">Request mentor stories</NavLink>
       </button>
+
+      <button style={{
+        height:"75px",
+        width:"150px",
+
+      }}>
+        <NavLink to="/video-upload">Upload course videos</NavLink>
+      </button>
     </div>
   );
 };

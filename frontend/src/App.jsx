@@ -6,8 +6,7 @@ import { useRef } from "react";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import { Outlet } from "react-router-dom";
-// import toast, { Toaster } from 'react-hot-toast';
-import { useContext } from "react";
+import { useEffect } from "react";
 import { userContext } from "./context/userContext";
 
 function App() {

@@ -1,11 +1,17 @@
 import React, { useState, useEffect, useLocation } from "react";
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import React, { useState, useEffect, useLocation } from "react";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../Category/Category.css";
+import axios from "axios";
 import axios from "axios";
 
 const Category = () => {
   const [data, setData] = useState(null);
+  const [data2, setData2] = useState(null);
+
   console.log(window.location.href);
   const pathname = window.location.href; // '/category/Tourism'
 
@@ -28,8 +34,8 @@ const Category = () => {
   }, []);
   useEffect(() => {
     axios.get(url2).then(response => {
-      setData(...response.data);
-      console.log("Category" + response.data);
+      setData2(response.data);
+      console.log(response.data);
     });
   }, []);
   if (!data) {
@@ -51,7 +57,7 @@ const Category = () => {
       </section>
       <section>
         <h2>Success Stories</h2>
-        <div className="card">
+        {/* <div className="card">
           <div className="card-content">
             <h3 className="card-title">mr. ABC</h3>
             <p className="card-text">
@@ -62,19 +68,31 @@ const Category = () => {
               Read more
             </a>
           </div>
-        </div>
-        <div className="card">
+        </div> */}
+        {data2 &&
+          data2.map(val => (
+            <div className="card">
+              <h3 className="card-title">{val.title}</h3>
+              <div className="card-content">
+                <img
+                  className="article-header-image"
+                  src={val.url}
+                  alt="Header Image"
+                />
+                <h3 className="card-title">{val.username}</h3>
+                <p className="card-text">{val.content}</p>
+              </div>
+            </div>
+          ))}
+        {/* <div className="card">
           <div className="card-content">
-            <h3 className="card-title">Mr. XYZ</h3>
-            <p className="card-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-              quis justo eget urna posuere euismod eget ac diam.
-            </p>
+            <h3 className="card-title">{data2.name}</h3>
+            <p className="card-text">{data2.description}</p>
             <Link to="/success" className="card-link">
               Read more
             </Link>
           </div>
-        </div>
+        </div> */}
       </section>
     </div>
   );

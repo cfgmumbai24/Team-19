@@ -55,8 +55,8 @@ export default function Home() {
       color:"white",
       borderRadius:"20px"
     }}>
-      <NavLink to={user?"/states":"/login"}>
-        u<h2>Click here Help</h2>
+      <NavLink to="/states">
+        <h2>Click here Help</h2>
       </NavLink>
     </div>
     </div>

@@ -1,0 +1,111 @@
+/* LmsPage.css */
+
+.lms-page {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
+  background-color: #f9fafb;
+  color: #333;
+}
+
+h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 2.5em;
+  font-weight: 600;
+}
+
+.filter-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filter-container label {
+  margin-right: 10px;
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #555;
+}
+
+.filter-container select {
+  padding: 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1em;
+  background-color: #fff;
+  color: #555;
+  transition: border-color 0.2s;
+}
+
+.filter-container select:focus {
+  border-color: #007bff;
+}
+
+.videos-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.video-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  width: 300px;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  text-align: center;
+}
+
+.video-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+video {
+  width: 100%;
+  height: auto;
+  border-bottom: 1px solid #ddd;
+}
+
+.video-info {
+  padding: 20px;
+}
+
+.video-info h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #333;
+  font-size: 1.5em;
+}
+
+.video-info p {
+  margin: 5px 0;
+  color: #666;
+  font-size: 1em;
+}
+
+.video-info .tags-container {
+  margin-top: 10px;
+}
+
+.video-info .tag {
+  display: inline-block;
+  background-color: #007bff;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 0.9em;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  transition: background-color 0.2s;
+}
+
+.video-info .tag:hover {
+  background-color: #0056b3;
+}

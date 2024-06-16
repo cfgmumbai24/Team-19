@@ -1,0 +1,21 @@
+nav ul{
+  display: flex;
+  flex-direction: row;
+  text-decoration: none;
+  list-style: none;
+  gap: 2em;
+
+}
+nav{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+li{
+  font-size: 15px;
+  font-weight: bold;
+}

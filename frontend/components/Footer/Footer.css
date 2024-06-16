@@ -1,0 +1,41 @@
+/* FOOTER */
+footer{
+    height: 250px;
+    background-color: rgb(39, 139, 126);
+    color: rgb(210, 188, 175);
+    width: 100%;
+    padding-top: 75px;
+}
+h1{
+    margin-left: 70px;
+}
+
+footer h1{
+    color: rgb(255, 243, 221);
+   margin: 10px 0px 20px 0px;
+    width: 250px;
+
+}
+
+.details{
+    display: flex;
+    flex-direction: column;
+    margin: 0px 5% 5% 5%;
+    justify-content: center;
+    align-items: center;
+}
+
+footer ul{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5%;
+}
+
+footer ul p{
+    color:  rgb(255, 243, 221);
+}
+
+.details .text{
+    color: rgb(211, 174, 122);
+}

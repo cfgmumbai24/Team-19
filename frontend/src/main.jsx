@@ -12,6 +12,8 @@ import Admin from "../pages/Admin/Admin.jsx";
 import Chatbot from "../pages/Chatbot/Chatbot.jsx";
 import MentorRequest from "../components/mentor-request/MentorRequest.jsx";
 import Logout from "../components/Logout/Logout.jsx";
+import Page from "../components/Landing/Page.jsx";
+import MentorForm from "../components/mentor-request/mentor/mentor_form.jsx";
 import Login from "../components/Login/Login.jsx";
 import VideoUpload from "../pages/video-upload/VideoUpload.jsx";
 import LMS from "../pages/lms/LMS.jsx";
@@ -23,8 +25,6 @@ import { useState } from "react";
 //   }, [localStorage.getItem("user")]);
 // };
 
-// getUser;
-// const num = 10;
 const router = createBrowserRouter([
   {
     path: "/",
@@ -42,8 +42,13 @@ const router = createBrowserRouter([
         path: "/categories",
         element: <Categories />,
       },
+
       {
-        path: "/category",
+        path: "/category-form",
+        element: <CategoryForm />,
+      },
+      {
+        path: "/category/:id",
         element: <Category />,
       },
       {
@@ -77,6 +82,14 @@ const router = createBrowserRouter([
       {
         path: "/chatbot",
         element: <Chatbot />,
+      },
+      {
+        path: "/states",
+        element: <Page />,
+      },
+      {
+        path: "/mentor-form",
+        element: <MentorForm />,
       },
     ],
   },

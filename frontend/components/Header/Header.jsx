@@ -8,7 +8,7 @@ export default function Header() {
   return (
     <header className="header">
       <div className="header__logo">
-        <img src="logo.png" alt="NGO Logo" />
+        <img src="https://margshala.com/wp-content/uploads/2023/08/Margshala-Logo.png" alt="NGO Logo" />
       </div>
       <nav className="header__nav">
         <ul>

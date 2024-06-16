@@ -2,10 +2,18 @@ import React, { useState } from 'react';
 import ReactMarkdown from 'react-markdown';
 import './Chatbot.css';
 
+// Web Speech API
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const recognition = new SpeechRecognition();
+recognition.lang = 'en-US'; // Set recognition language to English
+
+const synth = window.speechSynthesis;
+
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
+  const [isListening, setIsListening] = useState(false);
 
   const toggleChat = () => {
     setIsOpen(!isOpen);
@@ -23,7 +31,7 @@ const Chatbot = () => {
     setMessages(newMessages);
     setInput('');
 
-    // Call the API
+    // Call the Gemini API
     try {
       const response = await fetch(
         `https://generativelanguage.googleapis.com/v1/models/gemini-1.5-flash:generateContent?key=`,
@@ -48,11 +56,36 @@ const Chatbot = () => {
       const botResponse = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Sorry, I did not understand that.';
 
       // Add bot message to chat
-      setMessages([...newMessages, { sender: 'bot', text: botResponse }]);
+      const updatedMessages = [...newMessages, { sender: 'bot', text: botResponse }];
+      setMessages(updatedMessages);
+
+      // Convert bot response to speech
+      const utterance = new SpeechSynthesisUtterance(botResponse);
+      utterance.lang = 'en-US'; // Set TTS language to English
+      synth.speak(utterance);
     } catch (error) {
       console.error('Error fetching data:', error);
       setMessages([...newMessages, { sender: 'bot', text: 'An error occurred. Please try again later.' }]);
     }
+  };
+
+  const handleVoiceInput = () => {
+    setIsListening(true);
+    recognition.start();
+    recognition.onresult = (event) => {
+      const voiceInput = event.results[0][0].transcript;
+      setInput(voiceInput);
+      setIsListening(false);
+    };
+    recognition.onspeechend = () => {
+      recognition.stop();
+      handleSend(); // Automatically send the message after voice input
+      setIsListening(false);
+    };
+    recognition.onerror = (event) => {
+      // console.error('Speech recognition error:', event.error);
+      setIsListening(false);
+    };
   };
 
   return (
@@ -78,10 +111,13 @@ const Chatbot = () => {
               type="text"
               value={input}
               onChange={handleInputChange}
-              placeholder="Type your message..."
+              placeholder="Type or use voice..."
               className="chat-input"
             />
             <button onClick={handleSend}>Send</button>
+            <button onClick={handleVoiceInput} className="voice-button">
+              {isListening ? '🎤 Listening...' : '🎤'}
+            </button>
           </div>
         </div>
       )}

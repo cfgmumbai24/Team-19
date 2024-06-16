@@ -1,57 +1,59 @@
-import React from "react";
+import React, { useState, useEffect, useLocation } from "react";
+import { useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "../Category/Category.css";
+import axios from "axios";
 
 const Category = () => {
+  const [data, setData] = useState(null);
+  const [data2, setData2] = useState(null);
+
+  console.log(window.location.href);
+  const pathname = window.location.href; // '/category/Tourism'
+
+  // Split the pathname by '/'
+  const segments = pathname.split("/");
+
+  // Get the last segment
+  const lastSegment = segments[segments.length - 1];
+
+  console.log(lastSegment);
+  // const [category, setCategory] = useState(null);
+  // console.log(match);
+  const url = `http://localhost:4000/api/categoriesGet?name=${lastSegment}`;
+  const url2 = `http://localhost:4000/api/uploadGet?category=${lastSegment}`;
+  useEffect(() => {
+    axios.get(url).then(response => {
+      setData(...response.data);
+      console.log(response.data);
+    });
+  }, []);
+  useEffect(() => {
+    axios.get(url2).then(response => {
+      setData2(response.data);
+      console.log(response.data);
+    });
+  }, []);
+  if (!data) {
+    return <p>Loading...</p>; // You can replace this with a loading spinner or any other loading indicator
+  }
+
   return (
     <div className="article">
       <section className="article-header">
-        <h1 className="article-title">Embroidery</h1>
+        <h1 className="article-title">{data.name}</h1>
         <div className="container">
           <img
             className="article-header-image"
-            src="https://c02.purpledshub.com/uploads/sites/51/2022/02/baby-bonnet-daisy-embroidery-step6-e0b00d6.jpg"
+            src={data.url}
             alt="Header Image"
           />
         </div>
-        <p id = "myid">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi
-          explicabo tempore officiis, asperiores incidunt quis dolor voluptates
-          sapiente maxime harum dolore magnam ad laboriosam, odio in nam
-          consequatur quam. Iste. At, consequuntur, magnam, deleniti eligendi
-          ipsam in repellendus similique iure veritatis velit eius culpa tempore
-          cum eveniet? Laborum eaque voluptas labore officiis placeat
-          doloremque, et velit illum enim ab provident. Esse impedit ut aliquam
-          debitis est incidunt, ex suscipit sint deserunt explicabo natus ullam
-          reiciendis illum in. Doloremque nobis quidem explicabo nam mollitia
-          ratione omnis, doloribus numquam labore, saepe rem. Error facere quae
-          repudiandae rerum maxime eum tenetur corporis explicabo non quibusdam
-          neque labore iure accusantium fugit aliquam, vero ad totam itaque quo
-          consectetur vitae! Ex tenetur cupiditate totam accusamus! Accusantium
-          sit consequuntur sint animi magni fugit aut beatae, nesciunt suscipit,
-          fugiat quas numquam accusamus. Ratione porro placeat ipsum
-          accusantium. Quisquam illo dignissimos enim earum corrupti autem
-          repudiandae repellendus voluptatibus. Delectus ipsam dolores tempore
-          corporis sint adipisci ipsa eveniet voluptate, dicta iure unde velit
-          accusantium consequatur explicabo quibusdam minus ab cum quam quas
-          iusto dolor quos tenetur inventore nulla? Natus. Nostrum eius nemo
-          quasi architecto, provident ipsa vero dolores, fuga in voluptatem
-          placeat doloribus facilis, eaque quaerat voluptates animi consectetur!
-          Vero temporibus iste placeat vitae quaerat facere, odio laudantium
-          adipisci. Ullam, repellat. Non rem delectus consequatur hic, quos ea
-          maiores dicta recusandae accusamus beatae labore, ducimus rerum, omnis
-          quisquam harum! Atque aperiam itaque labore autem repellendus expedita
-          suscipit nulla temporibus. Distinctio expedita excepturi corporis
-          recusandae laudantium velit autem eos natus nobis, veritatis quidem
-          nulla quisquam ipsam? Dolor dolorem voluptate harum quam illum, ut
-          praesentium magnam officia cum iste aspernatur quasi! Temporibus est
-          expedita corporis recusandae quod. Aliquid ducimus accusantium iure
-          dolores eligendi est delectus, et maiores illum deleniti harum fuga
-          non, totam quam ipsum iste culpa blanditiis vel porro accusamus.
-        </p>
+        <p id="myid">{data.description}</p>
       </section>
       <section>
         <h2>Success Stories</h2>
-        <div className="card">
+        {/* <div className="card">
           <div className="card-content">
             <h3 className="card-title">mr. ABC</h3>
             <p className="card-text">
@@ -62,19 +64,31 @@ const Category = () => {
               Read more
             </a>
           </div>
-        </div>
-        <div className="card">
+        </div> */}
+        {data2 &&
+          data2.map(val => (
+            <div className="card">
+              <h3 className="card-title">{val.title}</h3>
+              <div className="card-content">
+                <img
+                  className="article-header-image"
+                  src={val.url}
+                  alt="Header Image"
+                />
+                <h3 className="card-title">{val.username}</h3>
+                <p className="card-text">{val.content}</p>
+              </div>
+            </div>
+          ))}
+        {/* <div className="card">
           <div className="card-content">
-            <h3 className="card-title">Mr. XYZ</h3>
-            <p className="card-text">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam
-              quis justo eget urna posuere euismod eget ac diam.
-            </p>
-            <a href="/success" className="card-link">
+            <h3 className="card-title">{data2.name}</h3>
+            <p className="card-text">{data2.description}</p>
+            <Link to="/success" className="card-link">
               Read more
-            </a>
+            </Link>
           </div>
-        </div>
+        </div> */}
       </section>
     </div>
   );

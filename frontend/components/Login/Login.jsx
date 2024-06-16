@@ -38,37 +38,37 @@ export default function Login() {
 
         navigate("/")
       };
-  const [formData, setFormData] = useState({
-    username: "",
-    password: "",
-  });
+  // const [formData, setFormData] = useState({
+  //   username: "",
+  //   password: "",
+  // });
 
-  const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
+  // const handleChange = (e) => {
+  //   setFormData({
+  //     ...formData,
+  //     [e.target.name]: e.target.value,
+  //   });
+  // };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  // const handleSubmit = async (e) => {
+  //   e.preventDefault();
 
-    try {
-      const response = await axios.post(
-        "http://localhost:4000/api/auth/login",
-        formData
-      );
-      console.log(response.data);
-      sessionStorage.setItem("user", JSON.stringify(response.data));
-      const data = JSON.stringify(response.data);
-      if (data.error) throw new Error(data.error);
-      console.log(data);
-      // Handle successful registration
-    } catch (error) {
-      console.error(error);
-      // Handle registration error
-    }
-  };
+  //   try {
+  //     const response = await axios.post(
+  //       "http://localhost:4000/api/auth/login",
+  //       formData
+  //     );
+  //     console.log(response.data);
+  //     sessionStorage.setItem("user", JSON.stringify(response.data));
+  //     const data = JSON.stringify(response.data);
+  //     if (data.error) throw new Error(data.error);
+  //     console.log(data);
+  //     // Handle successful registration
+  //   } catch (error) {
+  //     console.error(error);
+  //     // Handle registration error
+  //   }
+  // };
 
   return (
     <div className="form-container" style={{ marginTop: "100px" }}>

@@ -12,22 +12,23 @@ import Admin from "../pages/Admin/Admin.jsx";
 import Chatbot from "../pages/Chatbot/Chatbot.jsx";
 import MentorRequest from "../components/mentor-request/MentorRequest.jsx";
 import Logout from "../components/Logout/Logout.jsx";
-import Page from "../components/Landing/Page.jsx";
+// import Page from "../components/Landing/Page.jsx";
 import Protected from "../components/AuthLayout.jsx";
-import MentorForm from "../components/mentor-request/mentor/mentor_form.jsx";
+// import MentorForm from "../components/mentor-request/mentor/mentor_form.jsx";
 import Page from "../components/Landing/Page.jsx";
 import MentorForm from "../components/mentor-request/mentor/mentor_form.jsx";
 import Login from "../components/Login/Login.jsx";
 import VideoUpload from "../pages/video-upload/VideoUpload.jsx";
 import LMS from "../pages/lms/LMS.jsx";
 import { useState } from "react";
+import CategoryForm from "../components/Category/Category.jsx";
 
 // const getUser = () => {
 //   useEffect(() => {
 //     setUser(localStorage.getItem("user"));
 //   }, [localStorage.getItem("user")]);
 // };const user = sessionStorage.getItem("user")
-console.log(user)
+// console.log(user)
 
 const router = createBrowserRouter([
   {
@@ -40,7 +41,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/sign-up",
-        element: <Protected authentication={false}><Sign /></Protected>,
+        element: <Sign/>,
       },
       {
         path: "/categories",

@@ -30,7 +30,6 @@ const Chatbot = () => {
     const newMessages = [...messages, { sender: 'user', text: input }];
     setMessages(newMessages);
     setInput('');
-
     // Call the Gemini API
     try {
       const response = await fetch(

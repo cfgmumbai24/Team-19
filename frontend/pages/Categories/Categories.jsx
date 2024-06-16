@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import "../Categories/Categories.css";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import Chatbot from "../Chatbot/Chatbot";  
 
 const Categories = () => {
   const [data, setData] = useState(null);
@@ -64,6 +65,7 @@ const Categories = () => {
 
   return (
     <>
+    <Chatbot  />
       <div className="card-grid">
         {data &&
           data.map(val => (

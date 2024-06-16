@@ -6,7 +6,7 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "../Category/Category.css";
 import axios from "axios";
-
+import Chatbot from "../Chatbot/Chatbot";
 const Category = () => {
   const [data, setData] = useState(null);
   const [data2, setData2] = useState(null);
@@ -42,6 +42,7 @@ const Category = () => {
   }
 
   return (
+    <>
     <div className="article">
       <section className="article-header">
         <h1 className="article-title">{data.name}</h1>
@@ -94,6 +95,7 @@ const Category = () => {
         </div> */}
       </section>
     </div>
+    </>
   );
 };
 

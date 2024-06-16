@@ -43,6 +43,7 @@ const Category = () => {
 
   return (
     <>
+    <Chatbot />
     <div className="article">
       <section className="article-header">
         <h1 className="article-title">{data.name}</h1>

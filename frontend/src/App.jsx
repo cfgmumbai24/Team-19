@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import reactLogo from "./assets/react.svg";
 import viteLogo from "/vite.svg";
 import "./App.css";
@@ -6,23 +6,29 @@ import { useRef } from "react";
 import Header from "../components/Header/Header";
 import Footer from "../components/Footer/Footer";
 import { Outlet } from "react-router-dom";
-import toast, { Toaster } from 'react-hot-toast';
+// import toast, { Toaster } from 'react-hot-toast';
+import { useContext } from "react";
+import { userContext } from "./context/userContext";
 
 function App() {
   const footerRef = useRef(null);
-
+  const [user, setUser] = useState(localStorage.getItem("user"))
+  useEffect(()=>{
+    setUser(localStorage.getItem("user"))
+  }, [localStorage.getItem("user")])
   const scrollToFooter = () => {
     footerRef.current.scrollIntoView({ behavior: 'smooth' });
   };
   return (
     <>
-    {/* toast.error("skis") */}
+    <userContext.Provider value={[user, setUser]}>
       <Header scrollToFooter={scrollToFooter}/>
       <Outlet />
       <div style={{marginTop:"150px"}}>
       <Footer ref={footerRef} />
-      <Toaster />
+    
       </div>
+      </userContext.Provider>
     </>
   );
 }

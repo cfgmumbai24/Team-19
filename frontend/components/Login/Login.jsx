@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import './Login.css'; 
 import axios from "axios"
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 
 export default function Login() {
+  const navigate = useNavigate()
+
 
     const [formData, setFormData] = useState({
         username: '',
@@ -33,12 +35,14 @@ export default function Login() {
           console.error(error);
           // Handle registration error
         }
+
+        navigate("/")
       };
 
 
   return (
     <div className="form-container">
-      <h2>Register</h2>
+      <h2>Login</h2>
       
       <form onSubmit={handleSubmit}>
         <label>
@@ -52,7 +56,7 @@ export default function Login() {
 
         <NavLink to="/sign-up">Create account?</NavLink>
         
-        <button type="submit">Register</button>
+        <button type="submit">Login</button>
       </form>
 
 

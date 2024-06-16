@@ -1,8 +1,12 @@
 import React from 'react'
 import "./Home.css"
-import {NavLink} from "react-router-dom"
+import {NavLink, useNavigate} from "react-router-dom"
+import { userContext } from '../../src/context/userContext'
+import { useContext } from 'react'
 
 export default function Home() {
+  const navigate = useNavigate()
+  const [user, setUser] = useContext(userContext)
   return (
   <>
         <div className='homePage'>
@@ -51,8 +55,8 @@ export default function Home() {
       color:"white",
       borderRadius:"20px"
     }}>
-      <NavLink to="/states">
-        <h2>Click here Help</h2>
+      <NavLink to={user?"/states":"/login"}>
+        u<h2>Click here Help</h2>
       </NavLink>
     </div>
     </div>
